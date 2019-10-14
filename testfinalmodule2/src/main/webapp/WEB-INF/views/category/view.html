@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+<p><h1 class="title">View Category: <span th:text="${category.name}"></span> </h1> </p>
+<p><a href="/category">Back to list category</a> </p>
+<table border="1">
+    <tr>
+        <td>Name </td>
+        <td>Price </td>
+        <td>Quantity </td>
+        <td>Description </td>
+        <td>Date </td>
+        <td>Category</td>
+    </tr>
+    <th:block th:each="product : ${products}">
+        <tr>
+            <td><a th:href="@{/read/__${product.id}__}"  th:text="${product.name}"></a></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.quantity}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.date}"></td>
+            <td><a th:text="${product.category.name}" th:href="@{/view-category/__${product.category.id}__}"></a></td>
+            <td><a th:href="@{/edit/__${product.id}__}">Edit</a> </td>
+            <td><a th:href="@{/remove/__${product.id}__}">Delete</a> </td>
+            <td><a th:href="@{/read/__${product.id}__}">Read More...</a> </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

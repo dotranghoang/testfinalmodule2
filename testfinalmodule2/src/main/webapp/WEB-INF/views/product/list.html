@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+</head>
+<body>
+<h1 class="title">Product List Current</h1>
+<p><a href="/create">Create New Product</a> </p>
+<p>
+    <a href="/category">Back to list category</a>
+</p>
+<form>
+    Search by name:
+    <input name="s" type="text"/>
+    <input type="submit" value="Search"/>
+</form><br/>
+<table border="1px">
+    <div>
+        <tr>
+            <td>Name </td>
+            <td>Price </td>
+            <td>Quantity </td>
+            <td>Description </td>
+            <td>Date </td>
+            <td>Category</td>
+        </tr>
+        <div th:each="product : ${products}">
+            <tr>
+                <td><a th:href="@{/read/__${product.id}__}"  th:text="${product.name}"></a></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.date}"></td>
+                <td><a th:text="${product.category.name}" th:href="@{/view-category/__${product.category.id}__}"></a></td>
+                <td><a th:href="@{/edit/__${product.id}__}">Edit</a> </td>
+                <td><a th:href="@{/remove/__${product.id}__}">Delete</a> </td>
+                <td><a th:href="@{/read/__${product.id}__}">Read More...</a> </td>
+            </tr>
+        </div>
+    </div>
+</table>
+<div>
+    <a th:href="@{'/list'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
+    <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
+    <a th:href="@{'/list'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
+</div>
+</body>
+</html>
