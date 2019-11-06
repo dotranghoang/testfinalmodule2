@@ -22,7 +22,7 @@ public class CategoryController {
         return listCategory();
     }
 
-    @GetMapping("/category")
+    @GetMapping("/toiditimtoi")
     public ModelAndView listCategory(){
         Iterable<Category> categories = categoryService.findAll();
 
