@@ -40,7 +40,7 @@ public class CategoryController {
         return modelAndView;
     }
 
-    @PostMapping("/save-category")
+    @PostMapping("/save-categoryok")
     public ModelAndView saveCategory(@ModelAttribute("category") Category category){
         categoryService.save(category);
 
