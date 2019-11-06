@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
-    @ModelAttribute("categoriesaa")
+    @ModelAttribute("categoriesaaadsadasda")
     public Iterable<Category> categories(){
         return categoryService.findAll();
     }
