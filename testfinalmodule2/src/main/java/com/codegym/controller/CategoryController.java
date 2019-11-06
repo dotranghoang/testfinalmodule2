@@ -17,7 +17,7 @@ public class CategoryController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping("/")
+    @RequestMapping("/conghihi")
     public ModelAndView home(){
         return listCategory();
     }
